@@ -737,9 +737,10 @@
 </head>
 <!--  -->
 <body onload="initialize();">
+<div id="container">
 
 	
-	<LINK rel="stylesheet" href="jquery-ui-1.8.10.custom.css" type="text/css">
+	<LINK rel="stylesheet" href="/skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css">
 		
 	<table width="100%" cellpadding="2" cellspacing="2">
 	<tr>
@@ -851,7 +852,7 @@
 			<table style="padding-right:25px">
 			<tr>
 				<td align="center">
-
+					<img src="/skin/appiriologo.png" />
 				</td>
 			</tr>
 			</table>
@@ -859,31 +860,55 @@
 	</tr>
 	</table>
 
+	</div>
 		<script>
-		$(function() {
-			
-			var options = jQuery.parseJSON(buildJson());
-			
-			$( "#autocomplete" ).autocomplete({
-				source: options,
-				minLength: 2,
-				focus: function( event, ui ) {
-					//$( "#autocomplete" ).val( ui.item.label );
-					return false;
-				},
-				select: function( event, ui ) {
-					
-					openIFrameFromAutoComplete( ui.item.url );
-					//$( "#autocomplete" ).val( ui.item.label );
-					//$( "#autocomplete" ).val( 'ui.item.label' );
+				var i = 0;
+				//console.log(i);
+				window.onmouseout = function alertMe() {
+											
+											
+											i++;
+											console.log(i);
+											//console.log('woo');
+											
+											if(i > 2)
+												window.close();
 
+											}
+		
+				$(function() {
+			
+					var options = jQuery.parseJSON(buildJson());
+					
+					//$('#container').mouseover(alert('ws'));
+					window.onmousein = function logit() 
+						{
+							 console.log('in!');
+							}
+					//setMouseOut();
+			
+					$( "#autocomplete" ).autocomplete({
+						source: options,
+						minLength: 2,
+						select: function( event, ui ) {
+							openIFrameFromAutoComplete( ui.item.url );
+						}
+					});
+				});
+		
+				function setMouseOut() {
+					
+					$(window).mouseout(playMouseOut);
+					//window.onmouseout = playMouseOut();
+					//= window.close();			
 				}
 				
-				
-			});
-		});
+				function playMouseOut() {
+					alert('o'); 
+					//console.log("mouseout event detected!");
+				}
+		
 		</script>
-
 
 
 

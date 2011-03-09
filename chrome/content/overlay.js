@@ -14,7 +14,7 @@ var forcedotcomutilitybelt = {
 
   onToolbarButtonCommand: function(e) {
 
-  	window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "resizable=yes,scrollbars=yes,width=600,height=250");
+  	window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "titlebar=no,resizable=no,scrollbars=no,width=600,height=320");
 
   }
 };

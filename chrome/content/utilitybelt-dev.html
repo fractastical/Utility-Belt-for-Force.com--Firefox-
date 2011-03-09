@@ -8,10 +8,11 @@
 	<script type="text/javascript" src="chrome://forcedotcomutilitybelt/content/jquery-ui-1.8.10.custom.min.js" />
 	<LINK rel="stylesheet" href="chrome://forcedotcomutilitybelt/skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css">
 		
-	<LINK rel="stylesheet" href="../skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css">
-	
-	<script type="text/javascript" src="jquery-1.4.4.min.js" ></script>	
-	<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" ></script>
+		<!-- dev version  
+
+		<script type="text/javascript" src="jquery-1.4.4.min.js" ></script>	
+		<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" ></script>
+	     -->  
 
 	<script>
 	var urlBase;
@@ -343,12 +344,12 @@
 
 	  }
 	
-		if (itemDesc.length > 140)
-			itemDesc = itemDesc.substring(0,136) + "....";
+		if (itemDesc.length > 150)
+			itemDesc = itemDesc.substring(0,150) + "....";
 	
 		document.getElementById("feedUrl").href=itemUrl;
 		document.getElementById("feedUrl").innerHTML=itemTitle; 
-		document.getElementById("feedDesc").innerHTML = itemDesc;
+		feedDesc.innerText = itemDesc;
 	
 	}
 
@@ -457,28 +458,28 @@
 		var jsonOptions = '[ ';
 		
 				baseUrl = "http://www.salesforce.com/us/developer/docs/apexcode/Content/";
-				for(i=1; i < apexOptions.length; i++)
-				 	jsonOptions += '{ "label" : "' + apexOptions[i].text + ' " , "url" : "' + baseUrl + apexOptions[i].value + '"},';				
+				for(i=0; i < apexOptions.length; i++)
+				 	jsonOptions += '{ "label" : "' + apexOptions[i].text + ' " , "value" : "' + baseUrl + apexOptions[i].value + '"},';				
 
 				baseUrl = "http://www.salesforce.com/us/developer/docs/pages/Content/pages_compref_";
-				for(i=1; i < vfOptions.length; i++)
-			 		jsonOptions += '{ "label" : "' + vfOptions[i].text + ' " , "url" : "' + baseUrl + vfOptions[i].value + '"},';				
+				for(i=0; i < vfOptions.length; i++)
+			 		jsonOptions += '{ "label" : "' + vfOptions[i].text + ' " , "value" : "' + baseUrl + vfOptions[i].value + '"},';				
 
 				baseUrl = "http://www.salesforce.com/us/developer/docs/pages/Content/";
-				for(i=1; i < vfMiscOptions.length; i++)
-		 			jsonOptions += '{ "label" : "' + vfMiscOptions[i].text + ' " , "url" : "' + baseUrl + vfMiscOptions[i].value + '"},';				
+				for(i=0; i < vfMiscOptions.length; i++)
+		 			jsonOptions += '{ "label" : "' + vfMiscOptions[i].text + ' " , "value" : "' + baseUrl + vfMiscOptions[i].value + '"},';				
 
 				baseUrl = "http://www.salesforce.com/us/developer/docs/api/Content/";
-				for(i=1; i < soqlOptions.length; i++)
- 					jsonOptions += '{ "label" : "' + soqlOptions[i].text + ' " , "url" : "' + baseUrl + soqlOptions[i].value + '"}, ';				
+				for(i=0; i < soqlOptions.length; i++)
+ 					jsonOptions += '{ "label" : "' + soqlOptions[i].text + ' " , "value" : "' + baseUrl + soqlOptions[i].value + '"}, ';				
 				
 				baseUrl = "http://www.salesforce.com/us/developer/docs/ajax/Content/";
-				for(i=1; i < ajaxOptions.length; i++)
-					jsonOptions += '{ "label" : "' + ajaxOptions[i].text + ' " , "url" : "' + baseUrl + ajaxOptions[i].value + '"},';				
+				for(i=0; i < ajaxOptions.length; i++)
+					jsonOptions += '{ "label" : "' + ajaxOptions[i].text + ' " , "value" : "' + baseUrl + ajaxOptions[i].value + '"},';				
 
 				baseUrl = "http://www.salesforce.com/us/developer/docs/api/Content/";
-				for(i=1; i < aWebService.length; i++)
-					jsonOptions += '{ "label" : "' + aWebService[i].text + ' " , "url" : "' + baseUrl + aWebService[i].value + '"},';				
+				for(i=0; i < aWebService.length; i++)
+					jsonOptions += '{ "label" : "' + aWebService[i].text + ' " , "value" : "' + baseUrl + aWebService[i].value + '"},';				
 	
 	jsonOptions = jsonOptions.substring(0,jsonOptions.length - 1);
 					
@@ -702,11 +703,8 @@
 	#menuItem {
 		color: #000000;
 	}
-	
-	td.credittd {
-		margin-right: 30px;
-	}	
-	.credits {
+		
+	a.credits {
 		font-size: 10pt;
 		color: #d2d2d2;
 		text-decoration: none;
@@ -739,8 +737,7 @@
 <body onload="initialize();">
 
 	
-	<LINK rel="stylesheet" href="jquery-ui-1.8.10.custom.css" type="text/css">
-		
+	
 	<table width="100%" cellpadding="2" cellspacing="2">
 	<tr>
 			<td><img src="/skin/util_belt_logo.png" width="100"></td>
@@ -841,12 +838,12 @@
 	
 	<table width="100%">
 	<tr>
-		<td class="credittd">
+		<td>
 
-			<span class="credits">Credits: </span><a href="http://blog.jeffdouglas.com" target="_blank" class="credits" id="credits">1</a>&nbsp;|&nbsp;<a href="http://www.fractastical.com" target="_blank" class="credits" id="credits2">2</a>
+			Credits: <a href="http://blog.jeffdouglas.com" target="_blank" class="credits" id="credits">JD 1</a>&nbsp;|&nbsp;<a href="http://www.fractastical.com" target="_blank" class="credits" id="credits2">JD 2</a>
 
 		</td>
-		<td align="center"><strong>Force.com Blog:</strong> <a href="" id="feedUrl" target="_blank"></a><div id="feedDesc"></div></td>
+		<td align="center">Force.com Blog: <a href="" id="feedUrl" target="_blank"></a><div id="feedDesc"></div></td>
 		<td align="right" style="padding-left:35px">
 			<table style="padding-right:25px">
 			<tr>
@@ -868,14 +865,13 @@
 				source: options,
 				minLength: 2,
 				focus: function( event, ui ) {
-					//$( "#autocomplete" ).val( ui.item.label );
+					$( "#autocomplete" ).val( ui.item.label );
 					return false;
 				},
 				select: function( event, ui ) {
 					
-					openIFrameFromAutoComplete( ui.item.url );
-					//$( "#autocomplete" ).val( ui.item.label );
-					//$( "#autocomplete" ).val( 'ui.item.label' );
+					openIFrameFromAutoComplete( ui.item.value );
+					$( "#autocomplete" ).val( ui.item.label );
 
 				}
 				

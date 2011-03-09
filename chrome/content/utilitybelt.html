@@ -9,59 +9,11 @@
 	<script type="text/javascript" src="chrome://forcedotcomutilitybelt/content/jquery-ui-1.8.10.custom.min.js" />
 	<style type="text/css" src="chrome://forcedotcomutilitybelt/skin/cupertino/jquery-ui-1.8.10.custom.css" />
  -->  
+	
+	<script type="text/javascript" src="jquery-1.4.4.min.js" ></script>	
+	<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" ></script>
 
-	<style>
-	* {
-		font: 12px Arial;
-	}
-	
-	#sectionTitle {
-		font: 14px Arial;
-		font-weight: bold;
-		margin-bottom: 10px;
-	}
-	
-	#menuItem {
-		color: #000000;
-	}
-		
-	#credits {
-		font-size: 10pt;
-		color: #d2d2d2;
-		text-decoration: none;
-		margin-right: 35px;
-	}
-	
-	#idConverterSection {
-		margin-top: 25px; 
-		margin-left: 10px;
-		margin-bottom: 25px;
-	}
-	
-	#searchSection {
-		margin-top: 25px; 
-		margin-left: 10px;
-		margin-bottom: 25px;
-	}
-	
-	#feedUrl {
-		font-size: 10pt;
-	}
-	
-	#feedDesc {
-		font-size: 8pt;
-		font-style: italic;
-	}
-	</style>
-	
-</head>
-<!--  -->
-<body onload="initialize();">
-	
-	<script type="text/javascript" src="jquery-1.4.4.min.js" />	
-	<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" />
-	<style type="text/css" src="../skin/cupertino/jquery-ui-1.8.10.custom.css" />
-	
+
 	<script>
 	var urlBase;
 	var tabUrl;
@@ -500,6 +452,44 @@
 		
 	}
 	
+	
+	function buildJson(option) {
+		
+		var jsonOptions = '[ ';
+		
+				baseUrl = "http://www.salesforce.com/us/developer/docs/apexcode/Content/";
+				for(i=0; i < apexOptions.length; i++)
+				 	jsonOptions += '{ "label" : "' + apexOptions[i].text + ' " , "value" : "' + baseUrl + apexOptions[i].value + '"},';				
+
+				baseUrl = "http://www.salesforce.com/us/developer/docs/pages/Content/pages_compref_";
+				for(i=0; i < vfOptions.length; i++)
+			 		jsonOptions += '{ "label" : "' + vfOptions[i].text + ' " , "value" : "' + baseUrl + vfOptions[i].value + '"},';				
+
+				baseUrl = "http://www.salesforce.com/us/developer/docs/pages/Content/";
+				for(i=0; i < vfMiscOptions.length; i++)
+		 			jsonOptions += '{ "label" : "' + vfMiscOptions[i].text + ' " , "value" : "' + baseUrl + vfMiscOptions[i].value + '"},';				
+
+				baseUrl = "http://www.salesforce.com/us/developer/docs/api/Content/";
+				for(i=0; i < soqlOptions.length; i++)
+ 					jsonOptions += '{ "label" : "' + soqlOptions[i].text + ' " , "value" : "' + baseUrl + soqlOptions[i].value + '"}, ';				
+				
+				baseUrl = "http://www.salesforce.com/us/developer/docs/ajax/Content/";
+				for(i=0; i < ajaxOptions.length; i++)
+					jsonOptions += '{ "label" : "' + ajaxOptions[i].text + ' " , "value" : "' + baseUrl + ajaxOptions[i].value + '"},';				
+
+				baseUrl = "http://www.salesforce.com/us/developer/docs/api/Content/";
+				for(i=0; i < aWebService.length; i++)
+					jsonOptions += '{ "label" : "' + aWebService[i].text + ' " , "value" : "' + baseUrl + aWebService[i].value + '"},';				
+	
+	jsonOptions = jsonOptions.substring(0,jsonOptions.length - 1);
+					
+	jsonOptions += ' ]';
+					
+	return jsonOptions;
+		
+	}
+	
+	
 	function search() {
 
 		switch(parseInt(document.getElementById("searchScope").selectedIndex)) {
@@ -619,6 +609,15 @@
 		iframe.height = 800;
 		expandWindow();
 	}
+	
+	function openIFrameFromAutoComplete(url)
+	{
+		showIFrame();
+		var iframe = document.getElementById("frame");
+		iframe.src = url;
+		iframe.height = 800;
+		expandWindow();
+	}
 		
 	function toggle(section) {
 		
@@ -687,6 +686,56 @@
 		window.resizeTo(600,250);
 	}
 	</script>
+
+
+
+	<style>
+	* {
+		font: 12px Arial;
+	}
+	
+	#sectionTitle {
+		font: 14px Arial;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	
+	#menuItem {
+		color: #000000;
+	}
+		
+	a.credits {
+		font-size: 10pt;
+		color: #d2d2d2;
+		text-decoration: none;
+	}
+	
+	#idConverterSection {
+		margin-top: 25px; 
+		margin-left: 10px;
+		margin-bottom: 25px;
+	}
+	
+	#searchSection {
+		margin-top: 25px; 
+		margin-left: 10px;
+		margin-bottom: 25px;
+	}
+	
+	#feedUrl {
+		font-size: 10pt;
+	}
+	
+	#feedDesc {
+		font-size: 8pt;
+		font-style: italic;
+	}
+	</style>
+	
+</head>
+<!--  -->
+<body onload="initialize();">
+
 	
 	
 	<table width="100%" cellpadding="2" cellspacing="2">
@@ -705,12 +754,16 @@
 	
 	<div id="docsSection">
 		<div id="sectionTitle">Quick Reference Topics</div>
-		<input id="project" size="20" />
-		
+
+		<div class="ui-widget">
+			<label for="autocomplete">Type your query:</label>&nbsp;
+			<input id="autocomplete" />
+		</div>
+
 		<table cellpadding="2" cellspacing="2">
 		<tr>
 			<td colspan="2">
-
+				Or&nbsp;
 				<select id="main" onchange="showSubmenu()">
 					<option> -- Choose a Section --</option>
 					<option value="1">Apex</option>
@@ -787,7 +840,7 @@
 	<tr>
 		<td>
 
-			Credits: <a href="http://blog.jeffdouglas.com" target="_blank" id="credits">JD 1</a>&nbsp;|&nbsp;<a href="http://www.fractastical.com" target="_blank" id="credits2">JD 2</a>
+			Credits: <a href="http://blog.jeffdouglas.com" target="_blank" class="credits" id="credits">JD 1</a>&nbsp;|&nbsp;<a href="http://www.fractastical.com" target="_blank" class="credits" id="credits2">JD 2</a>
 
 		</td>
 		<td align="center">Force.com Blog: <a href="" id="feedUrl" target="_blank"></a><div id="feedDesc"></div></td>
@@ -805,46 +858,24 @@
 
 		<script>
 		$(function() {
-			var availableTags = [
-				"ActionScript",
-				"AppleScript",
-				"Asp",
-				"BASIC",
-				"C",
-				"C++",
-				"Clojure",
-				"COBOL",
-				"ColdFusion",
-				"Erlang",
-				"Fortran",
-				"Groovy",
-				"Haskell",
-				"Java",
-				"JavaScript",
-				"Lisp",
-				"Perl",
-				"PHP",
-				"Python",
-				"Ruby",
-				"Scala",
-				"Scheme"
-			];
-			$( "#tags" ).autocomplete({
-				source: availableTags
+			
+			var options = jQuery.parseJSON(buildJson());
+			
+			$( "#autocomplete" ).autocomplete({
+				source: options,
+				minLength: 2,
+				select: function( event, ui ) {
+					openIFrameFromAutoComplete(ui.item.value);
+
+				}
+				
+				
 			});
 		});
 		</script>
 
 
 
-	<div class="demo">
-
-	<div class="ui-widget">
-		<label for="tags">Tags: </label>
-		<input id="tags" />
-	</div>
-
-	</div><!-- End demo -->
 
 
 	

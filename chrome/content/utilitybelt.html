@@ -1,6 +1,15 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
+	
+	<!-- dev version  
+    
+	<script type="text/javascript" src="chrome://forcedotcomutilitybelt/content/jquery-1.4.4.min.js" />
+	<script type="text/javascript" src="chrome://forcedotcomutilitybelt/content/jquery-ui-1.8.10.custom.min.js" />
+	<style type="text/css" src="chrome://forcedotcomutilitybelt/skin/cupertino/jquery-ui-1.8.10.custom.css" />
+ -->  
+
 	<style>
 	* {
 		font: 12px Arial;
@@ -44,6 +53,14 @@
 		font-style: italic;
 	}
 	</style>
+	
+</head>
+<!--  -->
+<body onload="initialize();">
+	
+	<script type="text/javascript" src="jquery-1.4.4.min.js" />	
+	<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" />
+	<style type="text/css" src="../skin/cupertino/jquery-ui-1.8.10.custom.css" />
 	
 	<script>
 	var urlBase;
@@ -303,7 +320,7 @@
 	  tabUrl = tablink;
 	}
 
-	function init() {
+	function initialize() {
 	  req = new XMLHttpRequest();
 	  req.onload = handleResponse;
 	  req.onerror = handleError;
@@ -670,9 +687,7 @@
 		window.resizeTo(600,250);
 	}
 	</script>
-</head>
-
-<body onload="init();">
+	
 	
 	<table width="100%" cellpadding="2" cellspacing="2">
 	<tr>
@@ -690,6 +705,8 @@
 	
 	<div id="docsSection">
 		<div id="sectionTitle">Quick Reference Topics</div>
+		<input id="project" size="20" />
+		
 		<table cellpadding="2" cellspacing="2">
 		<tr>
 			<td colspan="2">
@@ -770,8 +787,7 @@
 	<tr>
 		<td>
 
-			Credits: <a href="http://blog.jeffdouglas.com" target="_blank" id="credits">JD 1</a> |
-			<a href="http://www.fractastical.com" target="_blank" id="credits2">JD 2</a>
+			Credits: <a href="http://blog.jeffdouglas.com" target="_blank" id="credits">JD 1</a>&nbsp;|&nbsp;<a href="http://www.fractastical.com" target="_blank" id="credits2">JD 2</a>
 
 		</td>
 		<td align="center">Force.com Blog: <a href="" id="feedUrl" target="_blank"></a><div id="feedDesc"></div></td>
@@ -787,6 +803,48 @@
 	</tr>
 	</table>
 
+		<script>
+		$(function() {
+			var availableTags = [
+				"ActionScript",
+				"AppleScript",
+				"Asp",
+				"BASIC",
+				"C",
+				"C++",
+				"Clojure",
+				"COBOL",
+				"ColdFusion",
+				"Erlang",
+				"Fortran",
+				"Groovy",
+				"Haskell",
+				"Java",
+				"JavaScript",
+				"Lisp",
+				"Perl",
+				"PHP",
+				"Python",
+				"Ruby",
+				"Scala",
+				"Scheme"
+			];
+			$( "#tags" ).autocomplete({
+				source: availableTags
+			});
+		});
+		</script>
+
+
+
+	<div class="demo">
+
+	<div class="ui-widget">
+		<label for="tags">Tags: </label>
+		<input id="tags" />
+	</div>
+
+	</div><!-- End demo -->
 
 
 	

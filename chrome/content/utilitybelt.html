@@ -599,7 +599,7 @@
 		gotoUrl = baseUrl + document.getElementById("sub").options[document.getElementById("sub").selectedIndex].value;
 		document.getElementById("frame").location.href = gotoUrl;
 		document.getElementById("frame").height = 800;
-		expandWindow();
+
 	}
 		
 	function toggle(section) {
@@ -682,32 +682,30 @@
 	<table width="100%" cellpadding="2" cellspacing="2">
 	<tr>
 			<td><img src="/skin/util_belt_logo.png" width="100"></td>
-
-			<td width="200" nowrap style="padding-right:25px">
-				<a href="#" id="menuItem" onclick="toggle('docsSection')">Quick Reference Topics</a><br>
-				<a href="#" id="menuItem" onclick="toggle('searchSection')">Search for Stuff</a><br>
-				<a href="#" id="menuItem" onclick="toggle('idConverterSection')">ID Converter</a><br><br>
-				<a href="http://developer.force.com" target="_blank" id="menuItem">developer.force.com</a><br>
+			<td width="200" style="padding-right:25px">
+				<a href="#" id="menuItem" onclick="toggle('docsSection')">Quick Reference Topics</a><br/>
+				<a href="#" id="menuItem" onclick="toggle('searchSection')">Search for Stuff</a><br/>
+				<a href="#" id="menuItem" onclick="toggle('idConverterSection')">ID Converter</a><br/><br/>
+				<a href="http://developer.force.com" target="_blank" id="menuItem">developer.force.com</a><br/>
 				<a href="http://wiki.developerforce.com/index.php/Documentation" target="_blank" id="menuItem">Force.com Documentation</a>
 
 			</td>
 	</tr>
 	</table>
 	
-	<div id="docsSection"">
+	<div id="docsSection">
 		<div id="sectionTitle">Quick Reference Topics</div>
 		<table cellpadding="2" cellspacing="2">
 		<tr>
 			<td colspan="2">
 
 				<select id="main" onchange="showSubmenu()">
-					<option> -- Choose a Section --
+					<option> -- Choose a Section --</option>
 					<option value="1">Apex</option>
 					<option value="3">Visualforce</option>
 					<option value="2">Visualforce Components</option>
 					<option value="4">SOQL</option>
 					<option value="5">AJAX Toolkit</option>
-
 					<option value="6">Web Services API</option>
 				</select>
 			</td>
@@ -718,7 +716,7 @@
 			</td>
 
 			<td>
-				<input type="button" value="Open in New Window" id="btnOpenWin" name="btnOpenWin" style="visibility:hidden" onclick="openWin();">
+				<input type="button" value="Open in New Window" id="btnOpenWin" name="btnOpenWin" style="visibility:hidden" onclick="openWin();" />
 			</td>
 		</tr>
 		</table>
@@ -729,7 +727,7 @@
 	<div id="idConverterSection" style="visibility:hidden">
 
 		<div id="sectionTitle">SFDC ID Converter</div>
-		15 Digit ID: <input type="text" id="idToConvert" onkeydown="if (event.keyCode == 13) convert()" maxlength="15"> <input type="button" name="btn" value="Convert" onclick="convert()">
+		15 Digit ID: <input type="text" id="idToConvert" onkeydown="if (event.keyCode == 13) convert()" maxlength="15" /> <input type="button" name="btn" value="Convert" onclick="convert()" />
 		<p>18 Digit ID: <span id="convertedId"></span></p>
 	</div>
 	
@@ -757,6 +755,7 @@
 						<option value="handbook">Salesforce Handbook - Delicious Bookmarks</option>
 						<option value="codeshare">Code Share</option>
 						<option value="appexchange">AppExchange</option>
+
 						<option value="cloudgofer">Cloud Gofer</option>
 						<option value="google">Google</option>
 					</select>
@@ -765,19 +764,19 @@
 		<tr>
 			<td>Keyword: </td>
 
-			<td><input type="text" id="searchKeyword" onkeydown="if (event.keyCode == 13) search()" size="50"> <input type="button" name="btn" value="Search" onclick="search()"></td>
+			<td><input type="text" id="searchKeyword" onkeydown="if (event.keyCode == 13) search()" size="50" /> <input type="button" name="btn" value="Search" onclick="search()" /></td>
 		</tr>
 		</table>
 	</div>
 	
-	<hr>
+	<hr/>
 	
 	<table width="100%">
 	<tr>
 		<td>
 
 			<a href="http://www.fractastical.com" target="_blank" id="credits">Credits</a>
-		<td>
+		</td>
 		<td align="center"><a href="" id="feedUrl" target="_blank"></a><div id="feedDesc"></div></td>
 		<td align="right" style="padding-left:35px">
 			<table style="padding-right:25px">

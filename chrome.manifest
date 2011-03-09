@@ -1,0 +1,7 @@
+content   forcedotcomutilitybelt                 chrome/content/
+skin      forcedotcomutilitybelt   classic/1.0   chrome/skin/
+locale    forcedotcomutilitybelt   en-US         chrome/locale/en-US/
+
+
+overlay   chrome://browser/content/browser.xul   chrome://forcedotcomutilitybelt/content/ff-overlay.xul
+style chrome://global/content/customizeToolbar.xul chrome://forcedotcomutilitybelt/skin/overlay.css

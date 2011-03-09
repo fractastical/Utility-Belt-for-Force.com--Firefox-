@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window
+    id="findfile-window"
+    title="Find Files"
+    orient="horizontal"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<!-- Other elements go here --> 
+
+
+	
+	<table width="100%" cellpadding="2" cellspacing="2">
+	<tr>
+
+			<td width="200" style="padding-right:25px">
+				<a href="#" id="menuItem" onclick="toggle('docsSection')">Quick Reference Topics</a><br/>
+				<a href="#" id="menuItem" onclick="toggle('searchSection')">Search for Stuff</a><br/>
+				<a href="#" id="menuItem" onclick="toggle('idConverterSection')">ID Converter</a><br/><br/>
+				<a href="http://developer.force.com" target="_blank" id="menuItem">developer.force.com</a><br/>
+				<a href="http://wiki.developerforce.com/index.php/Documentation" target="_blank" id="menuItem">Force.com Documentation</a>
+
+			</td>
+	</tr>
+	</table>
+	
+	<div id="docsSection">
+		<div id="sectionTitle">Quick Reference Topics</div>
+		<table cellpadding="2" cellspacing="2">
+		<tr>
+			<td colspan="2">
+
+				<select id="main" onchange="showSubmenu()">
+					<option> -- Choose a Section --</option>
+					<option value="1">Apex</option>
+					<option value="3">Visualforce</option>
+					<option value="2">Visualforce Components</option>
+					<option value="4">SOQL</option>
+					<option value="5">AJAX Toolkit</option>
+					<option value="6">Web Services API</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<select id="sub" style="visibility:hidden" onchange="changeSubMenu()"></select>
+			</td>
+
+			<td>
+				<input type="button" value="Open in New Window" id="btnOpenWin" name="btnOpenWin" style="visibility:hidden" onclick="openWin();" />
+			</td>
+		</tr>
+		</table>
+	
+		<iframe frameborder="0" width="100%" height="100%" id="frame" name="frame"></iframe>
+	</div>
+	
+	<div id="idConverterSection" style="visibility:hidden">
+
+		<div id="sectionTitle">SFDC ID Converter</div>
+		15 Digit ID: <input type="text" id="idToConvert" onkeydown="if (event.keyCode == 13) convert()" maxlength="15" /> <input type="button" name="btn" value="Convert" onclick="convert()" />
+		<p>18 Digit ID: <span id="convertedId"></span></p>
+	</div>
+	
+	<div id="searchSection" style="visibility:hidden">
+		<div id="sectionTitle">Search for Stuff</div>
+
+		<table cellpadding="2" cellspacing="2">
+			<tr>
+				<td>Scope: </td>
+				<td>
+					<select id="searchScope" onchange="searchKeyword.focus();">
+						<option value="apexguide">Apex Code Developer Guide</option>
+						<option value="apex">Apex Discussion Boards</option>
+
+						<option value="vfguide">Visualforce Developer Guide</option>
+						<option value="visualforce">Visualforce Discussion Boards</option>
+						<option value="ws">Web Services API Developer Guide</option>
+						<option value="ajax">AJAX Toolkit Developer Guide</option>
+						<option value="meta">Metadata API Developer Guide</option>
+						<option value="bulk">Bulk API Developer Guide</option>
+
+						<option value="blog">blog.jeffdouglas.com</option>
+						<option value="cookbook">Force.com Cookbook</option>
+						<option value="snipplr">Snipplr</option>
+						<option value="handbook">Salesforce Handbook - Delicious Bookmarks</option>
+						<option value="codeshare">Code Share</option>
+						<option value="appexchange">AppExchange</option>
+
+						<option value="cloudgofer">Cloud Gofer</option>
+						<option value="google">Google</option>
+					</select>
+				</td>
+			</tr>
+		<tr>
+			<td>Keyword: </td>
+
+			<td><input type="text" id="searchKeyword" onkeydown="if (event.keyCode == 13) search()" size="50" /> <input type="button" name="btn" value="Search" onclick="search()" /></td>
+		</tr>
+		</table>
+	</div>
+	
+	<hr/>
+	
+	<table width="100%">
+	<tr>
+		<td>
+
+			<a href="http://www.fractastical.com" target="_blank" id="credits">Credits</a>
+		</td>
+		<td align="center"><a href="" id="feedUrl" target="_blank"></a><div id="feedDesc"></div></td>
+		<td align="right" style="padding-left:35px">
+			<table style="padding-right:25px">
+			<tr>
+				<td align="center">
+
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+
+
+</window>

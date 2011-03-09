@@ -597,10 +597,11 @@
 	function changeSubMenu() {
 		showIFrame();
 		gotoUrl = baseUrl + document.getElementById("sub").options[document.getElementById("sub").selectedIndex].value;
-		document.getElementById("frame").location.href = gotoUrl;
-		document.getElementById("frame").height = 800;
-
-	}  
+		var iframe = document.getElementById("frame");
+		iframe.src = gotoUrl;
+		iframe.height = 800;
+		expandWindow();
+	}
 		
 	function toggle(section) {
 		

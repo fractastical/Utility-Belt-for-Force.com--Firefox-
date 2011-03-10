@@ -4,14 +4,6 @@
 <head>
 	
     
-	<script type="text/javascript" src="chrome://forcedotcomutilitybelt/content/jquery-1.4.4.min.js" />
-	<script type="text/javascript" src="chrome://forcedotcomutilitybelt/content/jquery-ui-1.8.10.custom.min.js" />
-	<LINK rel="stylesheet" href="chrome://forcedotcomutilitybelt/skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css">
-		
-	<LINK rel="stylesheet" href="../skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css">
-	
-	<script type="text/javascript" src="jquery-1.4.4.min.js" ></script>	
-	<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" ></script>
 
 	<script>
 	var urlBase;
@@ -739,6 +731,9 @@
 <body onload="initialize();">
 <div id="container">
 
+	<script type="text/javascript" src="jquery-1.4.4.min.js" ></script>	
+	<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" ></script>
+
 	
 	<LINK rel="stylesheet" href="/skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css">
 		
@@ -755,7 +750,6 @@
 			</td>
 	</tr>
 	</table>
-	
 	<div id="docsSection">
 		<div id="sectionTitle">Quick Reference Topics</div>
 
@@ -839,7 +833,6 @@
 	</div>
 	
 	<hr/>
-	
 	<table width="100%">
 	<tr>
 		<td class="credittd">
@@ -862,51 +855,33 @@
 
 	</div>
 		<script>
-				var i = 0;
-				//console.log(i);
-				window.onmouseout = function alertMe() {
-											
-											
-											i++;
-											console.log(i);
-											//console.log('woo');
-											
-											if(i > 2)
-												window.close();
 
-											}
-		
 				$(function() {
 			
+					initEventHandlers();
+
 					var options = jQuery.parseJSON(buildJson());
-					
-					//$('#container').mouseover(alert('ws'));
-					window.onmousein = function logit() 
-						{
-							 console.log('in!');
-							}
-					//setMouseOut();
 			
 					$( "#autocomplete" ).autocomplete({
 						source: options,
 						minLength: 2,
 						select: function( event, ui ) {
 							openIFrameFromAutoComplete( ui.item.url );
+							logit('selected');  
+
 						}
 					});
 				});
-		
-				function setMouseOut() {
-					
-					$(window).mouseout(playMouseOut);
-					//window.onmouseout = playMouseOut();
-					//= window.close();			
+				
+				function initEventHandlers() {
+					$('#container').mouseleave(playMouseLeave);
 				}
 				
-				function playMouseOut() {
-					alert('o'); 
-					//console.log("mouseout event detected!");
-				}
+				function playMouseLeave() {
+					//window can't be closed directly in Firefox
+					window.opener.closeChild();
+				};
+				
 		
 		</script>
 

@@ -1,3 +1,5 @@
+var newwindow;
+
 var forcedotcomutilitybelt = {
   onLoad: function() {
     // initialization code
@@ -13,10 +15,13 @@ var forcedotcomutilitybelt = {
   },
 
   onToolbarButtonCommand: function(e) {
-
-  	window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "titlebar=no,resizable=no,scrollbars=no,width=600,height=320");
-
+  		newwindow = window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "titlebar=no,resizable=no,scrollbars=no,width=600,height=320");
   }
+
 };
+
+function closeChild(){
+	newwindow.close();
+}
 
 window.addEventListener("load", function () { forcedotcomutilitybelt.onLoad(); }, false);

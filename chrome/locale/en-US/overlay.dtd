@@ -1,8 +1,8 @@
 <!ENTITY forcedotcomutilitybelt.label "Your localized menuitem">
 <!ENTITY forcedotcomutilitybeltContext.label "Your Menuitem">
 <!ENTITY forcedotcomutilitybeltContext.accesskey "Y">
-<!ENTITY forcedotcomutilitybeltToolbarButton.label "Your Toolbar Button">
-<!ENTITY forcedotcomutilitybeltToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY forcedotcomutilitybeltToolbarButton.label "Force.com Utility Belt">
+<!ENTITY forcedotcomutilitybeltToolbarButton.tooltip "Force.com Utility Belt">
 <!ENTITY forcedotcomutilitybeltSidebar.label "Your Sidebar">
 <!ENTITY forcedotcomutilitybeltToolbar.name  "example">
 <!ENTITY forcedotcomutilitybeltToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &forcedotcomutilitybeltToolbar.name;">

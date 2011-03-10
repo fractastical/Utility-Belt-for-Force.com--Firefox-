@@ -5,6 +5,7 @@ var forcedotcomutilitybelt = {
     // initialization code
     this.initialized = true;
     this.strings = document.getElementById("forcedotcomutilitybelt-strings");
+	firstRun();
   },
 
   onMenuItemCommand: function(e) {
@@ -15,13 +16,40 @@ var forcedotcomutilitybelt = {
   },
 
   onToolbarButtonCommand: function(e) {
-  		newwindow = window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "titlebar=no,resizable=no,scrollbars=no,width=600,height=320");
+  		newwindow = window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "titlebar=no,resizable=no,scrollbars=no,width=600,height=350");
   }
 
 };
 
 function closeChild(){
 	newwindow.close();
+}
+
+
+//@fractastical: as far as I can tell this code (supplied by Mozilla) doesn't work. 
+function firstRun()
+{
+
+	var myId    = "forcedotcomutilitybelt-toolbar-button"; // ID of button to add
+	var navBar  = document.getElementById("nav-bar");
+	var curSet  = navBar.currentSet.split(",");
+
+	if (curSet.indexOf(myId) == -1) {
+
+	  var pos = curSet.length;
+	  var set = curSet.slice(0, pos).concat(myId).concat(curSet.slice(pos));
+
+	  navBar.setAttribute("currentset", set.join(","));
+	  navBar.currentSet = set.join(",");
+	  document.persist(navBar.id, "currentset");
+	  try {
+	    BrowserToolboxCustomizeDone(true);
+	  }
+	  catch (e) {
+		alert(e);
+	  }
+   }
+	
 }
 
 window.addEventListener("load", function () { forcedotcomutilitybelt.onLoad(); }, false);

@@ -1,0 +1,44 @@
+* {
+	font: 12px Arial;
+}
+
+#sectionTitle {
+	font: 14px Arial;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#menuItem {
+	color: #000000;
+}
+
+td.credittd {
+	margin-right: 30px;
+}	
+
+.credits {
+	font-size: 10pt;
+	color: #d2d2d2;
+	text-decoration: none;
+}
+
+#idConverterSection {
+	margin-top: 25px; 
+	margin-left: 10px;
+	margin-bottom: 25px;
+}
+
+#searchSection {
+	margin-top: 25px; 
+	margin-left: 10px;
+	margin-bottom: 25px;
+}
+
+#feedUrl {
+	font-size: 10pt;
+}
+
+#feedDesc {
+	font-size: 8pt;
+	font-style: italic;
+}

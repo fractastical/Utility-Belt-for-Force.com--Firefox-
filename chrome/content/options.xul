@@ -7,7 +7,5 @@
       <preference id="boolpref1" name="extensions.forcedotcomutilitybelt.boolpref" type="bool"/>
     </preferences>
     <checkbox id="checkboolpref" preference="boolpref1" label="&checkboolpref.label;" accesskey="&checkboolpref.accesskey;"/>
-    <label accesskey="&intpref.accesskey;" control="textintpref">&intpref.label;</label><textbox id="textintpref" preference="intpref1"/>
-    <label accesskey="&stringpref.accesskey;" control="textstringpref">&stringpref.label;</label><textbox id="textstringpref" preference="stringpref1"/>
   </prefpane>
 </prefwindow>

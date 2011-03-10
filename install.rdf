@@ -4,14 +4,16 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="forcedotcomutilitybelt@fractastical.com"
-                   em:name="forcedotcomutilitybelt"
+                   em:name="Force.com Utility Belt"
                    em:version="0.1"
-                   em:creator="Jd"
+                   em:creator="Joel Dietz"
+                   em:description="Port of Force.com Utility Belt for Chrome"
+                   em:homepageURL="http://blog.jeffdouglas.com/2010/08/26/chrome-extension-force-com-utility-belt-for-saleforce-com/"
                    em:optionsURL="chrome://forcedotcomutilitybelt/content/options.xul">
-    <em:targetApplication RDF:resource="rdf:#$5rQ9x3"/>
+    <em:targetApplication RDF:resource="rdf:#$3Byk11"/>
   </RDF:Description>
-  <RDF:Description RDF:about="rdf:#$5rQ9x3"
+  <RDF:Description RDF:about="rdf:#$3Byk11"
                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                   em:minVersion="3.5"
+                   em:minVersion="3.0"
                    em:maxVersion="4.0.*" />
 </RDF:RDF>

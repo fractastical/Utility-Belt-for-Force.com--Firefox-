@@ -7,10 +7,22 @@
 			<script type="text/javascript" src="jquery-1.4.4.min.js" ></script>	
 			<script type="text/javascript" src="jquery-ui-1.8.10.custom.min.js" ></script>
 			<script type="text/javascript" src="utilitybelt.js" ></script>
+			<script type="text/javascript" src="ff-utilitybelt.js" ></script>
 
 			<LINK rel="stylesheet" href="/skin/cupertino/jquery-ui-1.8.10.custom.css" type="text/css" >
 			<LINK rel="stylesheet" href="/skin/utilitybelt.css" type="text/css" >
 	
+			<table width="100%" cellpadding="2" cellspacing="2">
+				<tr>
+						<td style="width: 10px;"><div class="ui-state-default ui-corner-all ui-state-active" title=".ui-icon-circle-close"><span class="ui-icon ui-icon-circle-close" onclick="closeMe();"></span><span class="text" style="display: none; ">.ui-icon-circle-close</span></div></td>
+						<td align="left" style="width: 10px;"><div class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-nw"><span class="ui-icon ui-icon-triangle-1-nw" onclick="moveMe('nw');"></span><span class="text" style="display: none; ">.ui-icon-triangle-1-nw</span></div></td>
+
+						<td colspan="2">&nbsp;</td>
+						<td align="right" style="width: 10px;"><div class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-ne"><span class="ui-icon ui-icon-triangle-1-ne" onclick="moveMe('ne');"></span><span class="text" style="display: none; ">.ui-icon-triangle-1-ne</span></div>
+					</td>
+				</tr>	
+		    </table>
+		 
 			<table width="100%" cellpadding="2" cellspacing="2">
 			<tr>
 					<td><img src="/skin/util_belt_logo.png" width="100"></td>
@@ -125,46 +137,18 @@
 				</td>
 			</tr>
 			</table>
+			<table width="100%" cellpadding="2" cellspacing="2">
+				<tr>
+						<td align="left" style="width: 10px;"><div class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-sw"><span class="ui-icon ui-icon-triangle-1-sw" onclick="moveMe('sw');"></span><span class="text" style="display: none; ">.ui-icon-triangle-1-sw</span></div></td>
+						<td colspan="2">&nbsp;</td>
+						<td align="right" style="width: 10px;"><div class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-se"><span class="ui-icon ui-icon-triangle-1-se" onclick="moveMe('se');"></span><span class="text" style="display: none; ">.ui-icon-triangle-1-se</span></div>
+					</td>
+				</tr>	
+		    </table>
+
+
 
 			</div>
-				<script>
-
-						var autocompleteOpen = false;
-
-						$(function() {
-		
-							initEventHandlers();
-
-							var options = jQuery.parseJSON(buildJson());
-
-							$( "#autocomplete" ).autocomplete({
-								source: options,
-								minLength: 2,
-								select: function( event, ui ) {
-									openIFrameFromAutoComplete( ui.item.url );
-								},
-								open: function(event, ui) { 
-							 	   autocompleteOpen = true;
-								},
-								close: function(event, ui) { 
-							 	   autocompleteOpen = false;
-								}
-							   
-							});
-						});
-			
-						function initEventHandlers() {
-							$('#container').mouseleave(playMouseLeave);
-						}
-			
-						function playMouseLeave() {
-							//window can't be closed directly from the same window in Firefox
-							if(!autocompleteOpen)
-								window.opener.closeChild();
-						}
-			
-	
-				</script>
 
 	</body>
 </html>

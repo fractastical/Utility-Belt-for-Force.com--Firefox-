@@ -16,7 +16,7 @@ var forcedotcomutilitybelt = {
   },
 
   onToolbarButtonCommand: function(e) {
-  		newwindow = window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "titlebar=no,resizable=no,scrollbars=no,width=600,height=350");
+  		newwindow = window.open("chrome://forcedotcomutilitybelt/content/utilitybelt.html", "Force.com Utility Belt", "width=600,height=370,titlebar=no,resizable=no,scrollbars=no");
   }
 
 };
@@ -26,7 +26,6 @@ function closeChild(){
 }
 
 
-//@fractastical: as far as I can tell this code (supplied by Mozilla) doesn't work. 
 function firstRun()
 {
 

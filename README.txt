@@ -1,10 +1,10 @@
 Force.com Utility Belt for Firefox README
 Version 0.2
 
-Prepared by Joel Dietz (@fractastical) 3.11.11
+Prepared by Joel Dietz (@fractastical) 3.30.11
 
 
-The following modifications have been made to the original Force.com Utility Belt by Jeff Douglas:
+The following modifications have been made to the original Force.com Utility Belt by Jeff Douglas (http://blog.jeffdouglas.com/force-com-utility-belt/):
 
 		(1) Convenient jQuery-powered autocomplete allows user to type in query and have the result load in iframe
 		(2) Added basic error handling for ID Converter. Most invalid Ids now give an error
